@@ -9,7 +9,8 @@ import chalk from 'chalk';
 import { config } from 'repo-configs';
 import * as fs from 'crypto-io-fs';
 import del from 'del';
-import { merge } from 'lodash'
+import normalizeNewline from 'normalize-newline';
+import { merge } from 'lodash';
 
 const { exists, write } = fs;
 const factory = IPFSFactory.create({type: 'go'});
@@ -28,11 +29,16 @@ if (process.platform === 'win32') {
 
 
 const initRepo = async (ipfsRepo, options) => {
-  const { repo, spec } = await config(options);
+  const { repo, spec, netkey } = await config(options);
   const dataSpecPath = join(options.repoPath, 'datastore_spec')
   ipfsRepo.init(repo, async error => {
     if (error) throw Error(error);
     await write(dataSpecPath, JSON.stringify(spec));
+    if (netkey) {      
+      const netkeyPath = join(options.repoPath, 'swarm.key');
+      console.log(netkey);
+      await write(netkeyPath, normalizeNewline(netkey));
+    }
     return;
   });
 }
@@ -52,7 +58,7 @@ const start = (ipfsd, flags) => new Promise(async (resolve, reject) => {
         console.group(chalk.green('ipfs daemon started and listening on'));
         addresses.forEach(address => console.log(chalk.cyan(address)))
         console.groupEnd();
-        resolve(id, addresses)
+        resolve({id, addresses})
       }).catch(error => reject(error))
     } else {
       return start(ipfsd, flags)
@@ -91,10 +97,6 @@ const prepareRepo = (repo, options) => new Promise((resolve, reject) => {
   })
 });
 
-const stop = (ipfsd, repoPath) => {
-  process.emit('SIGINT')
-}
-
 const startIpfsd = async (ipfsd, options) => {
   const ipfstStartTime = Date.now();
   try {
@@ -102,7 +104,7 @@ const startIpfsd = async (ipfsd, options) => {
     const { id, addresses } = await start(ipfsd, options.flags);
     
     console.log(`Daemon startup time: ${(Date.now() - ipfstStartTime) / 1000}s`);
-    return {ipfsd, id, addresses};
+    return { ipfs: ipfsd.api, id, addresses };
       
   } catch (error) {
     if (error.message.includes('cannot acquire lock') ||

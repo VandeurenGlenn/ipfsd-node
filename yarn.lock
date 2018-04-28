@@ -1725,6 +1725,10 @@ noop-logger@^0.1.1:
   version "0.1.1"
   resolved "https://registry.yarnpkg.com/noop-logger/-/noop-logger-0.1.1.tgz#94a2b1633c4f1317553007d8966fd0e841b6a4c2"
 
+normalize-newline@^3.0.0:
+  version "3.0.0"
+  resolved "https://registry.yarnpkg.com/normalize-newline/-/normalize-newline-3.0.0.tgz#1cbea804aba436001f83938ab21ec039d69ae9d3"
+
 npmlog@^4.0.1:
   version "4.1.2"
   resolved "https://registry.yarnpkg.com/npmlog/-/npmlog-4.1.2.tgz#08a7f2a8bf734604779a9efa4ad5cc717abb954b"
@@ -2040,10 +2044,11 @@ readable-stream@~1.0.0, readable-stream@~1.0.31:
     isarray "0.0.1"
     string_decoder "~0.10.x"
 
-repo-configs@^0.3.2:
-  version "0.3.2"
-  resolved "https://registry.yarnpkg.com/repo-configs/-/repo-configs-0.3.2.tgz#02afd7d888b58f43f22dac810d17123655872fcc"
+repo-configs@0.4.0-preview:
+  version "0.4.0-preview"
+  resolved "https://registry.yarnpkg.com/repo-configs/-/repo-configs-0.4.0-preview.tgz#b11746cbfd3f2013071232c5c1a64716de81f088"
   dependencies:
+    lodash "^4.17.10"
     peer-id "^0.10.6"
 
 request@^2.85.0:

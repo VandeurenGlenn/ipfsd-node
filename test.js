@@ -16,6 +16,7 @@ test('init & run custom node', async tape => {
   const node = require('./dist/commonjs/node')
   const options = {
     repoPath: join(process.cwd(), 'testrepo'),
+    bootstrap: 'leofcoin',
     ports: {
       swarm: 4002,
       api: 5002,
@@ -24,7 +25,7 @@ test('init & run custom node', async tape => {
     cleanup: true
   }
   const customNode = await node(options);
-  await customNode.start();
+  const { addresses } = await customNode.start();
   await customNode.stop();
   tape.ok(true);
   setTimeout(() => {

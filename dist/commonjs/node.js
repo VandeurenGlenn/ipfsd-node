@@ -13,6 +13,7 @@ var chalk = _interopDefault(require('chalk'));
 var repoConfigs = require('repo-configs');
 var fs$1 = require('crypto-io-fs');
 var del = _interopDefault(require('del'));
+var normalizeNewline = _interopDefault(require('normalize-newline'));
 var lodash = require('lodash');
 
 // ipfs modules
@@ -33,11 +34,16 @@ if (process.platform === 'win32') {
 
 
 const initRepo = async (ipfsRepo, options) => {
-  const { repo, spec } = await repoConfigs.config(options);
+  const { repo, spec, netkey } = await repoConfigs.config(options);
   const dataSpecPath = path.join(options.repoPath, 'datastore_spec');
   ipfsRepo.init(repo, async error => {
     if (error) throw Error(error);
     await write(dataSpecPath, JSON.stringify(spec));
+    if (netkey) {      
+      const netkeyPath = path.join(options.repoPath, 'swarm.key');
+      console.log(netkey);
+      await write(netkeyPath, normalizeNewline(netkey));
+    }
     return;
   });
 };
@@ -57,7 +63,7 @@ const start = (ipfsd, flags) => new Promise(async (resolve, reject) => {
         console.group(chalk.green('ipfs daemon started and listening on'));
         addresses.forEach(address => console.log(chalk.cyan(address)));
         console.groupEnd();
-        resolve(id, addresses);
+        resolve({id, addresses});
       }).catch(error => reject(error));
     } else {
       return start(ipfsd, flags)
@@ -100,10 +106,10 @@ const startIpfsd = async (ipfsd, options) => {
   const ipfstStartTime = Date.now();
   try {
     
-    await start(ipfsd, options.flags);
+    const { id, addresses } = await start(ipfsd, options.flags);
     
     console.log(`Daemon startup time: ${(Date.now() - ipfstStartTime) / 1000}s`);
-    return ipfsd;
+    return { ipfsd, id, addresses };
       
   } catch (error) {
     if (error.message.includes('cannot acquire lock') ||
@@ -115,22 +121,11 @@ const startIpfsd = async (ipfsd, options) => {
   }
 };
 const defaultOptions = {
-  bootstrapFor: 'earth',
-  repoPath: path.join(process.cwd(), 'repo'),
-  sharding: true,
-  cleanup: false,
-  flags: ['--enable-pubsub-experiment'],
-  ports: {
-    swarm: 4001,
-    gateway: 8080,
-    api: 5001
-  }
+  repoPath: path.join(process.cwd(), 'repo')
 };
 
 var node = async (options = {}) => {
-  console.log(options);
   options = lodash.merge(defaultOptions, options);
-  console.log(options);
   const repo = new Repo(options.repoPath);
   await prepareRepo(repo, options);
   const ipfsd = await spawn({init: false, repoPath: options.repoPath, disposable: false});

@@ -16,7 +16,8 @@
     "ipfs-repo": "^0.20.0",
     "ipfsd-ctl": "^0.32.1",
     "lodash": "^4.17.10",
-    "repo-configs": "^0.3.2"
+    "normalize-newline": "^3.0.0",
+    "repo-configs": "0.4.0-preview"
   },
   "devDependencies": {
     "rollup": "^0.58.2",
