@@ -1,0 +1,20 @@
+language: node_js
+node_js:
+- 8.11
+- 10
+cache:
+  yarn: true
+  directories:
+    - 'node_modules'
+    - $(npm config get prefix)/lib/node_modules
+script:
+  - npm run build
+deploy:
+  skip_cleanup: true
+  provider: npm
+  email: vandeurenglenn@gmail.com
+  api_key:
+    secure: ZTt1P1Tqn4JepNWVOTcG1kq5UjU7IJwEVBe+H80JQAKSIhiq1YUFOteEn3mj3CICWNCj7gKqDuLoodc4QLl+lq13Y9RlkiIDCzwP35/QkCcTzUJP647eC4KqD45BXJ9tDdZTelyRd7dw2rpK0lMT4Y3QbZlPJM1bX9savgrMX4lPSUsP8+T5eeE9O7URpLp/UbQbWNPGNYVLCb7gXLoaCJhUHguMwzEXFJm2uPY0rTCoH7fJcl8QuLdjxAeMNaI28brgnMlAK05Bpn/M7bCQQiuegSnK50j+czkX7CUK/4O0p2uKSPKC+VSMqnJJEfgdcPwYk9jQPRa03YRU109r30n4lzIxSDxbPBWbRGFb2WfNwbFLB4jNENk5ZuL6R0I9AHybgvU/7nU3oYB/j9UAs7f8/QC03CdsQQ/5DTJfCF1WXRwZfidShQsfVuQNBmSgDQjkG4gWTRIwRZra+O7LVDYtJREtue9x0X8OS46HUP3xlkc/41gXo7vqK5t1rV4uIruAgJowSszUhOMfbqSrjJFeO665oFGtgFS9323K1aZsL9ghUZiXZ9+lTVWBApewWjpX7MnP1ey5vY/iVQ1KSJkCFaR221hZ0EWo/Nq7WFLbkELQU8lDvQWkY00SbVmwYxGmAXdhIa1o8+ljPMequW4cIjmF3zceENKRWoeBxME=
+  on:
+    tags: true
+    repo: VandeurenGlenn/ipfsd-node

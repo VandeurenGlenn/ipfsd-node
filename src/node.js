@@ -36,7 +36,6 @@ const initRepo = async (ipfsRepo, options) => {
     await write(dataSpecPath, JSON.stringify(spec));
     if (netkey) {      
       const netkeyPath = join(options.repoPath, 'swarm.key');
-      console.log(netkey);
       await write(netkeyPath, normalizeNewline(netkey));
     }
     return;
