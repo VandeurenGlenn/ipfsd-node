@@ -127,7 +127,7 @@ export default async (options = {}) => {
     start: async flags => startIpfsd(ipfsd, options),
     stop: async () => {
       await ipfsd.stop()
-      await del(options.repoPath)
+      if (options.cleanup) await del(options.repoPath)
     },
     init: options => initRepo(repo, options)
   }
