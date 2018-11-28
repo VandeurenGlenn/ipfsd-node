@@ -34,7 +34,7 @@ const initRepo = async (ipfsRepo, options) => {
   ipfsRepo.init(repo, async error => {
     if (error) throw Error(error);
     await write(dataSpecPath, JSON.stringify(spec));
-    if (netkey) {      
+    if (netkey) {
       const netkeyPath = join(options.repoPath, 'swarm.key');
       await write(netkeyPath, normalizeNewline(netkey));
     }
@@ -45,7 +45,7 @@ const initRepo = async (ipfsRepo, options) => {
 const spawn = options => new Promise((resolve, reject) => {
   factory.spawn(options, (error, ipfsd) => {
     if (error) reject(error);
-    resolve(ipfsd);    
+    resolve(ipfsd);
   });
 });
 
@@ -62,7 +62,7 @@ const start = (ipfsd, flags) => new Promise(async (resolve, reject) => {
     } else {
       return start(ipfsd, flags)
     }
-    
+
   });
 });
 
@@ -78,7 +78,7 @@ const cleanRepo = async repoPath => {
       count++;
       const fileExists = await exists(path)
       if (fileExists) unlinkSync(path)
-      if (count === arr.length) {        
+      if (count === arr.length) {
         return;
       }
     }
@@ -99,15 +99,15 @@ const prepareRepo = (repo, options) => new Promise((resolve, reject) => {
 const startIpfsd = async (ipfsd, options) => {
   const ipfstStartTime = Date.now();
   try {
-    
+
     const { id, addresses } = await start(ipfsd, options.flags);
-    
+
     console.log(`Daemon startup time: ${(Date.now() - ipfstStartTime) / 1000}s`);
     return { ipfs: ipfsd.api, id, addresses };
-      
+
   } catch (error) {
     if (error.message.includes('cannot acquire lock') ||
-        error.code === 'ECONNREFUSED') {      
+        error.code === 'ECONNREFUSED') {
       await cleanRepo(options.repoPath);
     }
     return startIpfsd(ipfsd, options);
@@ -124,11 +124,11 @@ export default async (options = {}) => {
   await prepareRepo(repo, options);
   const ipfsd = await spawn({init: false, repoPath: options.repoPath, disposable: false});
   return {
-    start: async flags => startIpfsd(ipfsd, options),
+    start: async () => startIpfsd(ipfsd, options),
     stop: async () => {
       await ipfsd.stop()
       if (options.cleanup) await del(options.repoPath)
     },
-    init: options => initRepo(repo, options)
+    init: () => initRepo(repo, options)
   }
 }
