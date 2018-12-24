@@ -122,7 +122,7 @@ export default async (options = {}) => {
   options = merge(defaultOptions, options)
   const repo = new Repo(options.repoPath);
   await prepareRepo(repo, options);
-  const ipfsd = await spawn({init: false, repoPath: options.repoPath, disposable: false});
+  const ipfsd = await spawn({start: false, init: false, repoPath: options.repoPath, disposable: false});
   return {
     start: async () => startIpfsd(ipfsd, options),
     stop: async () => {
