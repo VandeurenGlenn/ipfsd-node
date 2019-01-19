@@ -121,7 +121,9 @@ const defaultOptions = {
 export default async (options = {}) => {
   options = merge(defaultOptions, options)
   const repo = new Repo(options.repoPath);
-  await prepareRepo(repo, options);
+  const fileExists = await exists(join(options.repoPath, 'config'));
+  if (!fileExists) await initRepo(repo, options);
+  else await prepareRepo(repo, options);
   const ipfsd = await spawn({start: false, init: false, repoPath: options.repoPath, disposable: false});
   return {
     start: async () => startIpfsd(ipfsd, options),
