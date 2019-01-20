@@ -49,6 +49,7 @@ import * as fs from &apos;crypto-io-fs&apos;;
 import del from &apos;del&apos;;
 import normalizeNewline from &apos;normalize-newline&apos;;
 import { merge } from &apos;lodash&apos;;
+import multiaddr from &apos;multiaddr&apos;;
 
 const { exists, write, read } = fs;
 const factory = IPFSFactory.create({type: &apos;go&apos;});
@@ -111,10 +112,11 @@ const cleanRepo = async repoPath =&gt; {
 /**
   * @typedef {Object} defaultOptions
   * @property {boolean} options.sharding - desc
+  * @property {boolean} [option.force=false] - overwrite existing config
+  * @property {boolean} [option.cleanup=false] - clean repo
   * @property {string} [options.repoPath=&apos;cwd/repo&apos;] - path to ipfs repo
   * @property {string|array} [options.bootstrap=&apos;earth&apos;] - selects bootstrap &amp; swarmkey for wanted network, you can also pass an array with addresses yourself
   * @property {string} [options.network=&apos;earth&apos;] - selects bootstrap &amp; swarmkey for wanted network
-  * @property {boolean} [option.force=false] - overwrite existing config
   * @property {boolean} [options.sharding=true] - check [directory-sharding--hamt](https://github.com/ipfs/go-ipfs/blob/master/docs/experimental-features.md#directory-sharding--hamt) to learn more
   * @property {boolean} [options.filestore=true] - check [ipfs-filestore](https://github.com/ipfs/go-ipfs/blob/master/docs/experimental-features.md#ipfs-filestore) to learn more
   * @property {boolean} [options.streamMounting=false] - check [Libp2pStreamMounting](https://github.com/ipfs/go-ipfs/blob/master/docs/experimental-features.md#ipfs-p2p) to learn more
@@ -125,6 +127,7 @@ const cleanRepo = async repoPath =&gt; {
 const defaultOptions = {
   repoPath: join(process.cwd(), &apos;repo&apos;),
   force: false, // overwrite existing config
+  cleanup: false,
   sharding: true,
   filestore: true,
   relayHop: true,
@@ -136,35 +139,43 @@ class Node {
   /**
    * @param {object} [options=defaultOptions] - see {@link defaultOptions}
    */
-  constructor(options) {
-     return (async () =&gt; {
-       this.options = merge(defaultOptions, this.options)
-       this.repo = new Repo(this.options.repoPath);
-       const fileExists = await exists(join(this.options.repoPath, &apos;config&apos;));
-       if (fileExists &amp;&amp; !this.options.force) {
-         this.config = await read(join(this.options.repoPath, &apos;config&apos;), &apos;string&apos;);
-         this.config = JSON.parse(this.config);
-         this.config.Swarm.EnableAutoNATService = this.options.autoNAT;
-         this.config.Swarm.EnableAutoRelay = this.options.autoRelay;
-         this.config.Swarm.EnableRelayHop = this.options.relayHop;
-         this.config.Experimental.ShardingEnabled = this.options.sharding;
-         this.config.Experimental.FilestoreEnabled = this.options.filestore;
-         this.config.Experimental.Libp2pStreamMounting = this.options.streamMounting;
-       };
-       if (!fileExists || this.options.force) await this.init();
-       else await this.prepareRepo();
-       this.ipfsd = await spawn({start: false, init: false, repoPath: this.options.repoPath, disposable: false});
-       return this
-       // {
-       //   start: async () =&gt; this.startIpfsd(ipfsd, this.options),
-       //   stop: async () =&gt; {
-       //     await ipfsd.stop()
-       //     if (this.options.cleanup) await del(this.options.repoPath)
-       //   },
-       //   init: () =&gt; initRepo(this.repo, this.options)
-       // }
-     })()
-   }
+  constructor(options = {}) {
+    return (async () =&gt; {
+      this.options = merge(defaultOptions, options)
+      this.repo = new Repo(this.options.repoPath);
+      const fileExists = await exists(join(this.options.repoPath, &apos;config&apos;));
+      if (fileExists &amp;&amp; !this.options.force) {
+        this.config = await read(join(this.options.repoPath, &apos;config&apos;), &apos;string&apos;);
+        this.config = JSON.parse(this.config);
+        this.config.Swarm.EnableAutoNATService = this.options.autoNAT;
+        this.config.Swarm.EnableAutoRelay = this.options.autoRelay;
+        this.config.Swarm.EnableRelayHop = this.options.relayHop;
+        this.config.Experimental.ShardingEnabled = this.options.sharding;
+        this.config.Experimental.FilestoreEnabled = this.options.filestore;
+        this.config.Experimental.Libp2pStreamMounting = this.options.streamMounting;
+        if (ports.api) this.config.Addresses.API = (() =&gt; {
+          const addr = multiaddr(this.config.Addresses.API).nodeAddress();
+          addr.port = ports.api;
+          return addr.toString()
+        })();
+        if (ports.swarm) this.config.Addresses.Swarm = this.config.Addresses.Swarm.map(address =&gt; {
+          address = multiaddr(address).nodeAddress();
+          address.port = ports.swarm;
+          return address.toString();
+        });
+        if (ports.gateway) this.config.Addresses.Gateway = this.config.Addresses.Gateway = (() =&gt; {
+          const addr = multiaddr(this.config.Addresses.Gateway).nodeAddress();
+          addr.port = ports.gateway;
+          return addr.toString()
+        })();
+        write(join(this.options.repoPath, &apos;config&apos;), JSON.stringify(this.config))
+      };
+      if (!fileExists || this.options.force) await this.init();
+      else await this.prepareRepo();
+      this.ipfsd = await spawn({start: false, init: false, repoPath: this.options.repoPath, disposable: false});
+      return this;
+    })()
+  }
 
   async start() {
     const ipfstStartTime = Date.now();
@@ -180,7 +191,7 @@ class Node {
          error.code === &apos;ECONNREFUSED&apos;) {
        await cleanRepo(this.options.repoPath);
      }
-     return startIpfsd(this.ipfsd, this.options);
+     return this.start(this.ipfsd, this.options);
     }
   }
   async stop() {
