@@ -115,21 +115,23 @@ class Node {
         this.config.Experimental.ShardingEnabled = this.options.sharding;
         this.config.Experimental.FilestoreEnabled = this.options.filestore;
         this.config.Experimental.Libp2pStreamMounting = this.options.streamMounting;
-        if (ports.api) this.config.Addresses.API = (() => {
-          const addr = multiaddr(this.config.Addresses.API).nodeAddress();
-          addr.port = ports.api;
-          return addr.toString()
-        })();
-        if (ports.swarm) this.config.Addresses.Swarm = this.config.Addresses.Swarm.map(address => {
-          address = multiaddr(address).nodeAddress();
-          address.port = ports.swarm;
-          return address.toString();
-        });
-        if (ports.gateway) this.config.Addresses.Gateway = this.config.Addresses.Gateway = (() => {
-          const addr = multiaddr(this.config.Addresses.Gateway).nodeAddress();
-          addr.port = ports.gateway;
-          return addr.toString()
-        })();
+        if (this.options.ports) {
+          if (this.options.ports.api) this.config.Addresses.API = (() => {
+            const addr = multiaddr(this.config.Addresses.API).nodeAddress();
+            addr.port = this.options.ports.api;
+            return addr.toString()
+          })();
+          if (this.options.ports.swarm) this.config.Addresses.Swarm = this.config.Addresses.Swarm.map(address => {
+            address = multiaddr(address).nodeAddress();
+            address.port = this.options.ports.swarm;
+            return address.toString();
+          });
+          if (this.options.ports.gateway) this.config.Addresses.Gateway = this.config.Addresses.Gateway = (() => {
+            const addr = multiaddr(this.config.Addresses.Gateway).nodeAddress();
+            addr.port = this.options.ports.gateway;
+            return addr.toString()
+          })();
+        }
         write(join(this.options.repoPath, 'config'), JSON.stringify(this.config))
       };
       if (!fileExists || this.options.force) await this.init();
