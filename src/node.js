@@ -12,7 +12,7 @@ import del from 'del';
 import normalizeNewline from 'normalize-newline';
 import { merge } from 'lodash';
 
-const { exists, write } = fs;
+const { exists, write, read } = fs;
 const factory = IPFSFactory.create({type: 'go'});
 
 if (process.platform === 'win32') {
@@ -25,22 +25,6 @@ if (process.platform === 'win32') {
     process.emit('SIGINT');
   });
 };
-
-
-
-const initRepo = async (ipfsRepo, options) => {
-  const { repo, spec, netkey } = await config(options);
-  const dataSpecPath = join(options.repoPath, 'datastore_spec')
-  ipfsRepo.init(repo, async error => {
-    if (error) throw Error(error);
-    await write(dataSpecPath, JSON.stringify(spec));
-    if (netkey) {
-      const netkeyPath = join(options.repoPath, 'swarm.key');
-      await write(netkeyPath, normalizeNewline(netkey));
-    }
-    return;
-  });
-}
 
 const spawn = options => new Promise((resolve, reject) => {
   factory.spawn(options, (error, ipfsd) => {
@@ -86,51 +70,113 @@ const cleanRepo = async repoPath => {
     throw Error(error)
   }
 };
-
-const prepareRepo = (repo, options) => new Promise((resolve, reject) => {
-  repo.exists(async (error, exists) => {
-    if (error) reject(error);
-    else if (exists) resolve();
-    else await initRepo(repo, options);
-    resolve();
-  })
-});
-
-const startIpfsd = async (ipfsd, options) => {
-  const ipfstStartTime = Date.now();
-  try {
-
-    const { id, addresses } = await start(ipfsd, options.flags);
-
-    console.log(`Daemon startup time: ${(Date.now() - ipfstStartTime) / 1000}s`);
-    return { ipfs: ipfsd.api, id, addresses };
-
-  } catch (error) {
-    if (error.message.includes('cannot acquire lock') ||
-        error.code === 'ECONNREFUSED') {
-      await cleanRepo(options.repoPath);
-    }
-    return startIpfsd(ipfsd, options);
-    // errorHandler(error);
-  }
-}
+/**
+  * @typedef {Object} defaultOptions
+  * @property {boolean} options.sharding - desc
+  * @property {boolean} [option.force=false] - overwrite existing config
+  * @property {boolean} [option.cleanup=false] - clean repo
+  * @property {string} [options.repoPath='cwd/repo'] - path to ipfs repo
+  * @property {string|array} [options.bootstrap='earth'] - selects bootstrap & swarmkey for wanted network, you can also pass an array with addresses yourself
+  * @property {string} [options.network='earth'] - selects bootstrap & swarmkey for wanted network
+  * @property {boolean} [options.sharding=true] - check [directory-sharding--hamt](https://github.com/ipfs/go-ipfs/blob/master/docs/experimental-features.md#directory-sharding--hamt) to learn more
+  * @property {boolean} [options.filestore=true] - check [ipfs-filestore](https://github.com/ipfs/go-ipfs/blob/master/docs/experimental-features.md#ipfs-filestore) to learn more
+  * @property {boolean} [options.streamMounting=false] - check [Libp2pStreamMounting](https://github.com/ipfs/go-ipfs/blob/master/docs/experimental-features.md#ipfs-p2p) to learn more
+  * @property {boolean} [option.relayHop=true] - check [circuit-relay](https://github.com/ipfs/go-ipfs/blob/master/docs/experimental-features.md#circuit-relay) to learn more
+  * @property {boolean} [options.autoRelay=true] - check [autorelay](https://github.com/ipfs/go-ipfs/blob/master/docs/experimental-features.md#autorelay) to learn more
+  * @property {boolean} [options.autoNAT=true] - check [autorelay](https://github.com/ipfs/go-ipfs/blob/master/docs/experimental-features.md#autorelay) to learn more
+  */
 const defaultOptions = {
-  repoPath: join(process.cwd(), 'repo')
+  repoPath: join(process.cwd(), 'repo'),
+  force: false, // overwrite existing config
+  cleanup: false,
+  sharding: true,
+  filestore: true,
+  relayHop: true,
+  autoNAT: true,
+  autoRelay: true,
+  streamMounting: false
 }
+class Node {
+  /**
+   * @param {object} [options=defaultOptions] - see {@link defaultOptions}
+   */
+  constructor(options) {
+     return (async () => {
+       this.options = merge(defaultOptions, this.options || {})
+       this.repo = new Repo(this.options.repoPath);
+       const fileExists = await exists(join(this.options.repoPath, 'config'));
+       if (fileExists && !this.options.force) {
+         this.config = await read(join(this.options.repoPath, 'config'), 'string');
+         this.config = JSON.parse(this.config);
+         this.config.Swarm.EnableAutoNATService = this.options.autoNAT;
+         this.config.Swarm.EnableAutoRelay = this.options.autoRelay;
+         this.config.Swarm.EnableRelayHop = this.options.relayHop;
+         this.config.Experimental.ShardingEnabled = this.options.sharding;
+         this.config.Experimental.FilestoreEnabled = this.options.filestore;
+         this.config.Experimental.Libp2pStreamMounting = this.options.streamMounting;
+         write(join(this.options.repoPath, 'config'), JSON.stringify(this.config))
+       };
+       if (!fileExists || this.options.force) await this.init();
+       else await this.prepareRepo();
+       this.ipfsd = await spawn({start: false, init: false, repoPath: this.options.repoPath, disposable: false});
+       return this
+       // {
+       //   start: async () => this.startIpfsd(ipfsd, this.options),
+       //   stop: async () => {
+       //     await ipfsd.stop()
+       //     if (this.options.cleanup) await del(this.options.repoPath)
+       //   },
+       //   init: () => initRepo(this.repo, this.options)
+       // }
+     })()
+   }
 
-export default async (options = {}) => {
-  options = merge(defaultOptions, options)
-  const repo = new Repo(options.repoPath);
-  const fileExists = await exists(join(options.repoPath, 'config'));
-  if (!fileExists) await initRepo(repo, options);
-  else await prepareRepo(repo, options);
-  const ipfsd = await spawn({start: false, init: false, repoPath: options.repoPath, disposable: false});
-  return {
-    start: async () => startIpfsd(ipfsd, options),
-    stop: async () => {
-      await ipfsd.stop()
-      if (options.cleanup) await del(options.repoPath)
-    },
-    init: () => initRepo(repo, options)
+  async start() {
+    const ipfstStartTime = Date.now();
+    try {
+
+     const { id, addresses } = await start(this.ipfsd, this.options.flags);
+
+     console.log(`Daemon startup time: ${(Date.now() - ipfstStartTime) / 1000}s`);
+     return { ipfs: this.ipfsd.api, id, addresses };
+
+    } catch (error) {
+     if (error.message.includes('cannot acquire lock') ||
+         error.code === 'ECONNREFUSED') {
+       await cleanRepo(this.options.repoPath);
+     }
+     return this.start(this.ipfsd, this.options);
+    }
+  }
+  async stop() {
+    await this.ipfsd.stop()
+    if (this.options.cleanup) await del(this.options.repoPath)
+  }
+
+  async init() {
+    const { repo, spec, netkey } = await config(this.options);
+    const dataSpecPath = join(this.options.repoPath, 'datastore_spec')
+    this.repo.init(repo, async error => {
+      if (error) throw Error(error);
+      await write(dataSpecPath, JSON.stringify(spec));
+      if (netkey) {
+        const netkeyPath = join(this.options.repoPath, 'swarm.key');
+        await write(netkeyPath, normalizeNewline(netkey));
+      }
+      return;
+    });
+  }
+
+  prepareRepo() {
+    return new Promise((resolve, reject) => {
+      this.repo.exists(async (error, exists) => {
+        if (error) reject(error);
+        else if (exists) resolve();
+        else await this.init();
+        resolve();
+      })
+    });
   }
 }
+
+export default options => new Node(options);
