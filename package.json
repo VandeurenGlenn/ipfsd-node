@@ -1,6 +1,6 @@
 {
   "name": "ipfsd-node",
-  "version": "0.1.10",
+  "version": "0.2.0",
   "main": "dist/commonjs/node.js",
   "module": "dist/module/node.js",
   "repository": "https://github.com/vandeurenglenn/ipfsd-node",
