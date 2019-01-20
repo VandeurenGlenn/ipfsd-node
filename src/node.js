@@ -100,9 +100,9 @@ class Node {
   /**
    * @param {object} [options=defaultOptions] - see {@link defaultOptions}
    */
-  constructor(options) {
+  constructor(options = {}) {
      return (async () => {
-       this.options = merge(defaultOptions, this.options || {})
+       this.options = merge(defaultOptions, options)
        this.repo = new Repo(this.options.repoPath);
        const fileExists = await exists(join(this.options.repoPath, 'config'));
        if (fileExists && !this.options.force) {
