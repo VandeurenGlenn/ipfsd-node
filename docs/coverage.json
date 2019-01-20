@@ -1,0 +1,28 @@
+{
+  "coverage": "6.25%",
+  "expectCount": 16,
+  "actualCount": 1,
+  "files": {
+    "src/node.js": {
+      "expectCount": 16,
+      "actualCount": 1,
+      "undocumentLines": [
+        15,
+        16,
+        29,
+        36,
+        53,
+        97,
+        103,
+        104,
+        107,
+        118,
+        131,
+        148,
+        153,
+        167,
+        179
+      ]
+    }
+  }
+}

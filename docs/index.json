@@ -1,0 +1,1083 @@
+[
+  {
+    "__docId__": 1,
+    "kind": "external",
+    "name": "Infinity",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Infinity",
+    "memberof": "src/.external-ecmascript.js",
+    "static": true,
+    "longname": "src/.external-ecmascript.js~Infinity",
+    "access": "public",
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 2,
+    "kind": "external",
+    "name": "NaN",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/NaN",
+    "memberof": "src/.external-ecmascript.js",
+    "static": true,
+    "longname": "src/.external-ecmascript.js~NaN",
+    "access": "public",
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 3,
+    "kind": "external",
+    "name": "undefined",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/undefined",
+    "memberof": "src/.external-ecmascript.js",
+    "static": true,
+    "longname": "src/.external-ecmascript.js~undefined",
+    "access": "public",
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 4,
+    "kind": "external",
+    "name": "null",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/null",
+    "memberof": "src/.external-ecmascript.js",
+    "static": true,
+    "longname": "src/.external-ecmascript.js~null",
+    "access": "public",
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 5,
+    "kind": "external",
+    "name": "Object",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object",
+    "memberof": "src/.external-ecmascript.js",
+    "static": true,
+    "longname": "src/.external-ecmascript.js~Object",
+    "access": "public",
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 6,
+    "kind": "external",
+    "name": "object",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object",
+    "memberof": "src/.external-ecmascript.js",
+    "static": true,
+    "longname": "src/.external-ecmascript.js~object",
+    "access": "public",
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 7,
+    "kind": "external",
+    "name": "Function",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Function",
+    "memberof": "src/.external-ecmascript.js",
+    "static": true,
+    "longname": "src/.external-ecmascript.js~Function",
+    "access": "public",
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 8,
+    "kind": "external",
+    "name": "function",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Function",
+    "memberof": "src/.external-ecmascript.js",
+    "static": true,
+    "longname": "src/.external-ecmascript.js~function",
+    "access": "public",
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 9,
+    "kind": "external",
+    "name": "Boolean",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Boolean",
+    "memberof": "src/.external-ecmascript.js",
+    "static": true,
+    "longname": "src/.external-ecmascript.js~Boolean",
+    "access": "public",
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 10,
+    "kind": "external",
+    "name": "boolean",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Boolean",
+    "memberof": "src/.external-ecmascript.js",
+    "static": true,
+    "longname": "src/.external-ecmascript.js~boolean",
+    "access": "public",
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 11,
+    "kind": "external",
+    "name": "Symbol",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Symbol",
+    "memberof": "src/.external-ecmascript.js",
+    "static": true,
+    "longname": "src/.external-ecmascript.js~Symbol",
+    "access": "public",
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 12,
+    "kind": "external",
+    "name": "Error",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Error",
+    "memberof": "src/.external-ecmascript.js",
+    "static": true,
+    "longname": "src/.external-ecmascript.js~Error",
+    "access": "public",
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 13,
+    "kind": "external",
+    "name": "EvalError",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/EvalError",
+    "memberof": "src/.external-ecmascript.js",
+    "static": true,
+    "longname": "src/.external-ecmascript.js~EvalError",
+    "access": "public",
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 14,
+    "kind": "external",
+    "name": "InternalError",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/InternalError",
+    "memberof": "src/.external-ecmascript.js",
+    "static": true,
+    "longname": "src/.external-ecmascript.js~InternalError",
+    "access": "public",
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 15,
+    "kind": "external",
+    "name": "RangeError",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/RangeError",
+    "memberof": "src/.external-ecmascript.js",
+    "static": true,
+    "longname": "src/.external-ecmascript.js~RangeError",
+    "access": "public",
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 16,
+    "kind": "external",
+    "name": "ReferenceError",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/ReferenceError",
+    "memberof": "src/.external-ecmascript.js",
+    "static": true,
+    "longname": "src/.external-ecmascript.js~ReferenceError",
+    "access": "public",
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 17,
+    "kind": "external",
+    "name": "SyntaxError",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/SyntaxError",
+    "memberof": "src/.external-ecmascript.js",
+    "static": true,
+    "longname": "src/.external-ecmascript.js~SyntaxError",
+    "access": "public",
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 18,
+    "kind": "external",
+    "name": "TypeError",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/TypeError",
+    "memberof": "src/.external-ecmascript.js",
+    "static": true,
+    "longname": "src/.external-ecmascript.js~TypeError",
+    "access": "public",
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 19,
+    "kind": "external",
+    "name": "URIError",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/URIError",
+    "memberof": "src/.external-ecmascript.js",
+    "static": true,
+    "longname": "src/.external-ecmascript.js~URIError",
+    "access": "public",
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 20,
+    "kind": "external",
+    "name": "Number",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number",
+    "memberof": "src/.external-ecmascript.js",
+    "static": true,
+    "longname": "src/.external-ecmascript.js~Number",
+    "access": "public",
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 21,
+    "kind": "external",
+    "name": "number",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number",
+    "memberof": "src/.external-ecmascript.js",
+    "static": true,
+    "longname": "src/.external-ecmascript.js~number",
+    "access": "public",
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 22,
+    "kind": "external",
+    "name": "Date",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date",
+    "memberof": "src/.external-ecmascript.js",
+    "static": true,
+    "longname": "src/.external-ecmascript.js~Date",
+    "access": "public",
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 23,
+    "kind": "external",
+    "name": "String",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String",
+    "memberof": "src/.external-ecmascript.js",
+    "static": true,
+    "longname": "src/.external-ecmascript.js~String",
+    "access": "public",
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 24,
+    "kind": "external",
+    "name": "string",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String",
+    "memberof": "src/.external-ecmascript.js",
+    "static": true,
+    "longname": "src/.external-ecmascript.js~string",
+    "access": "public",
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 25,
+    "kind": "external",
+    "name": "RegExp",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/RegExp",
+    "memberof": "src/.external-ecmascript.js",
+    "static": true,
+    "longname": "src/.external-ecmascript.js~RegExp",
+    "access": "public",
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 26,
+    "kind": "external",
+    "name": "Array",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array",
+    "memberof": "src/.external-ecmascript.js",
+    "static": true,
+    "longname": "src/.external-ecmascript.js~Array",
+    "access": "public",
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 27,
+    "kind": "external",
+    "name": "Int8Array",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Int8Array",
+    "memberof": "src/.external-ecmascript.js",
+    "static": true,
+    "longname": "src/.external-ecmascript.js~Int8Array",
+    "access": "public",
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 28,
+    "kind": "external",
+    "name": "Uint8Array",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Uint8Array",
+    "memberof": "src/.external-ecmascript.js",
+    "static": true,
+    "longname": "src/.external-ecmascript.js~Uint8Array",
+    "access": "public",
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 29,
+    "kind": "external",
+    "name": "Uint8ClampedArray",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Uint8ClampedArray",
+    "memberof": "src/.external-ecmascript.js",
+    "static": true,
+    "longname": "src/.external-ecmascript.js~Uint8ClampedArray",
+    "access": "public",
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 30,
+    "kind": "external",
+    "name": "Int16Array",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Int16Array",
+    "memberof": "src/.external-ecmascript.js",
+    "static": true,
+    "longname": "src/.external-ecmascript.js~Int16Array",
+    "access": "public",
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 31,
+    "kind": "external",
+    "name": "Uint16Array",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Uint16Array",
+    "memberof": "src/.external-ecmascript.js",
+    "static": true,
+    "longname": "src/.external-ecmascript.js~Uint16Array",
+    "access": "public",
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 32,
+    "kind": "external",
+    "name": "Int32Array",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Int32Array",
+    "memberof": "src/.external-ecmascript.js",
+    "static": true,
+    "longname": "src/.external-ecmascript.js~Int32Array",
+    "access": "public",
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 33,
+    "kind": "external",
+    "name": "Uint32Array",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Uint32Array",
+    "memberof": "src/.external-ecmascript.js",
+    "static": true,
+    "longname": "src/.external-ecmascript.js~Uint32Array",
+    "access": "public",
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 34,
+    "kind": "external",
+    "name": "Float32Array",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Float32Array",
+    "memberof": "src/.external-ecmascript.js",
+    "static": true,
+    "longname": "src/.external-ecmascript.js~Float32Array",
+    "access": "public",
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 35,
+    "kind": "external",
+    "name": "Float64Array",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Float64Array",
+    "memberof": "src/.external-ecmascript.js",
+    "static": true,
+    "longname": "src/.external-ecmascript.js~Float64Array",
+    "access": "public",
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 36,
+    "kind": "external",
+    "name": "Map",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Map",
+    "memberof": "src/.external-ecmascript.js",
+    "static": true,
+    "longname": "src/.external-ecmascript.js~Map",
+    "access": "public",
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 37,
+    "kind": "external",
+    "name": "Set",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Set",
+    "memberof": "src/.external-ecmascript.js",
+    "static": true,
+    "longname": "src/.external-ecmascript.js~Set",
+    "access": "public",
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 38,
+    "kind": "external",
+    "name": "WeakMap",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/WeakMap",
+    "memberof": "src/.external-ecmascript.js",
+    "static": true,
+    "longname": "src/.external-ecmascript.js~WeakMap",
+    "access": "public",
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 39,
+    "kind": "external",
+    "name": "WeakSet",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/WeakSet",
+    "memberof": "src/.external-ecmascript.js",
+    "static": true,
+    "longname": "src/.external-ecmascript.js~WeakSet",
+    "access": "public",
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 40,
+    "kind": "external",
+    "name": "ArrayBuffer",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/ArrayBuffer",
+    "memberof": "src/.external-ecmascript.js",
+    "static": true,
+    "longname": "src/.external-ecmascript.js~ArrayBuffer",
+    "access": "public",
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 41,
+    "kind": "external",
+    "name": "DataView",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/DataView",
+    "memberof": "src/.external-ecmascript.js",
+    "static": true,
+    "longname": "src/.external-ecmascript.js~DataView",
+    "access": "public",
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 42,
+    "kind": "external",
+    "name": "JSON",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/JSON",
+    "memberof": "src/.external-ecmascript.js",
+    "static": true,
+    "longname": "src/.external-ecmascript.js~JSON",
+    "access": "public",
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 43,
+    "kind": "external",
+    "name": "Promise",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise",
+    "memberof": "src/.external-ecmascript.js",
+    "static": true,
+    "longname": "src/.external-ecmascript.js~Promise",
+    "access": "public",
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 44,
+    "kind": "external",
+    "name": "Generator",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Generator",
+    "memberof": "src/.external-ecmascript.js",
+    "static": true,
+    "longname": "src/.external-ecmascript.js~Generator",
+    "access": "public",
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 45,
+    "kind": "external",
+    "name": "GeneratorFunction",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/GeneratorFunction",
+    "memberof": "src/.external-ecmascript.js",
+    "static": true,
+    "longname": "src/.external-ecmascript.js~GeneratorFunction",
+    "access": "public",
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 46,
+    "kind": "external",
+    "name": "Reflect",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Reflect",
+    "memberof": "src/.external-ecmascript.js",
+    "static": true,
+    "longname": "src/.external-ecmascript.js~Reflect",
+    "access": "public",
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 47,
+    "kind": "external",
+    "name": "Proxy",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Proxy",
+    "memberof": "src/.external-ecmascript.js",
+    "static": true,
+    "longname": "src/.external-ecmascript.js~Proxy",
+    "access": "public",
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 48,
+    "kind": "file",
+    "name": "src/node.js",
+    "content": "// ipfs modules\r\nimport * as Repo from 'ipfs-repo';\r\nimport * as IPFSFactory from 'ipfsd-ctl';\r\n// buildin modules\r\nimport { join } from 'path';\r\nimport { unlinkSync, rmdirSync } from 'fs';\r\n\r\nimport chalk from 'chalk';\r\nimport { config } from 'repo-configs';\r\nimport * as fs from 'crypto-io-fs';\r\nimport del from 'del';\r\nimport normalizeNewline from 'normalize-newline';\r\nimport { merge } from 'lodash';\r\n\r\nconst { exists, write, read } = fs;\r\nconst factory = IPFSFactory.create({type: 'go'});\r\n\r\nif (process.platform === 'win32') {\r\n  const readLine = require('readline').createInterface({\r\n    input: process.stdin,\r\n    output: process.stdout\r\n  });\r\n\r\n  readLine.on('SIGINT', () => {\r\n    process.emit('SIGINT');\r\n  });\r\n};\r\n\r\nconst spawn = options => new Promise((resolve, reject) => {\r\n  factory.spawn(options, (error, ipfsd) => {\r\n    if (error) reject(error);\r\n    resolve(ipfsd);\r\n  });\r\n});\r\n\r\nconst start = (ipfsd, flags) => new Promise(async (resolve, reject) => {\r\n  ipfsd.start(flags, error => {\r\n    if (error) reject(error);\r\n    if (ipfsd.api) {\r\n      ipfsd.api.id().then(({id, addresses}) => {\r\n        console.group(chalk.green('ipfs daemon started and listening on'));\r\n        addresses.forEach(address => console.log(chalk.cyan(address)))\r\n        console.groupEnd();\r\n        resolve({id, addresses})\r\n      }).catch(error => reject(error))\r\n    } else {\r\n      return start(ipfsd, flags)\r\n    }\r\n\r\n  });\r\n});\r\n\r\nconst cleanRepo = async repoPath => {\r\n  console.log(`cleaning repo`);\r\n  try {\r\n    const arr = [\r\n      join(repoPath, 'api'),\r\n      join(repoPath, 'repo.lock')\r\n    ]\r\n    let count = 0;\r\n    for (const path of arr) {\r\n      count++;\r\n      const fileExists = await exists(path)\r\n      if (fileExists) unlinkSync(path)\r\n      if (count === arr.length) {\r\n        return;\r\n      }\r\n    }\r\n  } catch (error) {\r\n    throw Error(error)\r\n  }\r\n};\r\n/**\r\n  * @typedef {Object} defaultOptions\r\n  * @property {boolean} options.sharding - desc\r\n  * @property {string} [options.repoPath='cwd/repo'] - path to ipfs repo\r\n  * @property {string|array} [options.bootstrap='earth'] - selects bootstrap & swarmkey for wanted network, you can also pass an array with addresses yourself\r\n  * @property {string} [options.network='earth'] - selects bootstrap & swarmkey for wanted network\r\n  * @property {boolean} [option.force=false] - overwrite existing config\r\n  * @property {boolean} [options.sharding=true] - check [directory-sharding--hamt](https://github.com/ipfs/go-ipfs/blob/master/docs/experimental-features.md#directory-sharding--hamt) to learn more\r\n  * @property {boolean} [options.filestore=true] - check [ipfs-filestore](https://github.com/ipfs/go-ipfs/blob/master/docs/experimental-features.md#ipfs-filestore) to learn more\r\n  * @property {boolean} [options.streamMounting=false] - check [Libp2pStreamMounting](https://github.com/ipfs/go-ipfs/blob/master/docs/experimental-features.md#ipfs-p2p) to learn more\r\n  * @property {boolean} [option.relayHop=true] - check [circuit-relay](https://github.com/ipfs/go-ipfs/blob/master/docs/experimental-features.md#circuit-relay) to learn more\r\n  * @property {boolean} [options.autoRelay=true] - check [autorelay](https://github.com/ipfs/go-ipfs/blob/master/docs/experimental-features.md#autorelay) to learn more\r\n  * @property {boolean} [options.autoNAT=true] - check [autorelay](https://github.com/ipfs/go-ipfs/blob/master/docs/experimental-features.md#autorelay) to learn more\r\n  */\r\nconst defaultOptions = {\r\n  repoPath: join(process.cwd(), 'repo'),\r\n  force: false, // overwrite existing config\r\n  sharding: true,\r\n  filestore: true,\r\n  relayHop: true,\r\n  autoNAT: true,\r\n  autoRelay: true,\r\n  streamMounting: false\r\n}\r\nclass Node {\r\n  /**\r\n   * @param {object} [options=defaultOptions] - see {@link defaultOptions}\r\n   */\r\n  constructor(options) {\r\n     return (async () => {\r\n       this.options = merge(defaultOptions, this.options)\r\n       this.repo = new Repo(this.options.repoPath);\r\n       const fileExists = await exists(join(this.options.repoPath, 'config'));\r\n       if (fileExists && !this.options.force) {\r\n         this.config = await read(join(this.options.repoPath, 'config'), 'string');\r\n         this.config = JSON.parse(this.config);\r\n         this.config.Swarm.EnableAutoNATService = this.options.autoNAT;\r\n         this.config.Swarm.EnableAutoRelay = this.options.autoRelay;\r\n         this.config.Swarm.EnableRelayHop = this.options.relayHop;\r\n         this.config.Experimental.ShardingEnabled = this.options.sharding;\r\n         this.config.Experimental.FilestoreEnabled = this.options.filestore;\r\n         this.config.Experimental.Libp2pStreamMounting = this.options.streamMounting;\r\n       };\r\n       if (!fileExists || this.options.force) await this.init();\r\n       else await this.prepareRepo();\r\n       this.ipfsd = await spawn({start: false, init: false, repoPath: this.options.repoPath, disposable: false});\r\n       return this\r\n       // {\r\n       //   start: async () => this.startIpfsd(ipfsd, this.options),\r\n       //   stop: async () => {\r\n       //     await ipfsd.stop()\r\n       //     if (this.options.cleanup) await del(this.options.repoPath)\r\n       //   },\r\n       //   init: () => initRepo(this.repo, this.options)\r\n       // }\r\n     })()\r\n   }\r\n\r\n  async start() {\r\n    const ipfstStartTime = Date.now();\r\n    try {\r\n\r\n     const { id, addresses } = await start(this.ipfsd, this.options.flags);\r\n\r\n     console.log(`Daemon startup time: ${(Date.now() - ipfstStartTime) / 1000}s`);\r\n     return { ipfs: this.ipfsd.api, id, addresses };\r\n\r\n    } catch (error) {\r\n     if (error.message.includes('cannot acquire lock') ||\r\n         error.code === 'ECONNREFUSED') {\r\n       await cleanRepo(this.options.repoPath);\r\n     }\r\n     return startIpfsd(this.ipfsd, this.options);\r\n    }\r\n  }\r\n  async stop() {\r\n    await this.ipfsd.stop()\r\n    if (this.options.cleanup) await del(this.options.repoPath)\r\n  }\r\n\r\n  async init() {\r\n    const { repo, spec, netkey } = await config(this.options);\r\n    const dataSpecPath = join(this.options.repoPath, 'datastore_spec')\r\n    this.repo.init(repo, async error => {\r\n      if (error) throw Error(error);\r\n      await write(dataSpecPath, JSON.stringify(spec));\r\n      if (netkey) {\r\n        const netkeyPath = join(this.options.repoPath, 'swarm.key');\r\n        await write(netkeyPath, normalizeNewline(netkey));\r\n      }\r\n      return;\r\n    });\r\n  }\r\n\r\n  prepareRepo() {\r\n    return new Promise((resolve, reject) => {\r\n      this.repo.exists(async (error, exists) => {\r\n        if (error) reject(error);\r\n        else if (exists) resolve();\r\n        else await this.init();\r\n        resolve();\r\n      })\r\n    });\r\n  }\r\n}\r\n\r\nexport default options => new Node(options);\r\n",
+    "static": true,
+    "longname": "D:/Workspace/vandeurenglenn/ipfsd-node/src/node.js",
+    "access": "public",
+    "description": null,
+    "lineNumber": 1
+  },
+  {
+    "__docId__": 49,
+    "kind": "variable",
+    "name": "exists",
+    "memberof": "src/node.js",
+    "static": true,
+    "longname": "src/node.js~exists",
+    "access": "public",
+    "export": false,
+    "importPath": "ipfsd-node/src/node.js",
+    "importStyle": null,
+    "description": null,
+    "lineNumber": 15,
+    "undocument": true,
+    "type": {
+      "types": [
+        "*"
+      ]
+    },
+    "ignore": true
+  },
+  {
+    "__docId__": 50,
+    "kind": "variable",
+    "name": "factory",
+    "memberof": "src/node.js",
+    "static": true,
+    "longname": "src/node.js~factory",
+    "access": "public",
+    "export": false,
+    "importPath": "ipfsd-node/src/node.js",
+    "importStyle": null,
+    "description": null,
+    "lineNumber": 16,
+    "undocument": true,
+    "type": {
+      "types": [
+        "*"
+      ]
+    },
+    "ignore": true
+  },
+  {
+    "__docId__": 51,
+    "kind": "function",
+    "name": "spawn",
+    "memberof": "src/node.js",
+    "generator": false,
+    "async": false,
+    "static": true,
+    "longname": "src/node.js~spawn",
+    "access": "public",
+    "export": false,
+    "importPath": "ipfsd-node/src/node.js",
+    "importStyle": null,
+    "description": null,
+    "lineNumber": 29,
+    "undocument": true,
+    "params": [
+      {
+        "name": "options",
+        "types": [
+          "*"
+        ]
+      }
+    ],
+    "return": null,
+    "ignore": true
+  },
+  {
+    "__docId__": 52,
+    "kind": "function",
+    "name": "start",
+    "memberof": "src/node.js",
+    "generator": false,
+    "async": false,
+    "static": true,
+    "longname": "src/node.js~start",
+    "access": "public",
+    "export": false,
+    "importPath": "ipfsd-node/src/node.js",
+    "importStyle": null,
+    "description": null,
+    "lineNumber": 36,
+    "undocument": true,
+    "params": [
+      {
+        "name": "ipfsd",
+        "types": [
+          "*"
+        ]
+      },
+      {
+        "name": "flags",
+        "types": [
+          "*"
+        ]
+      }
+    ],
+    "return": null,
+    "ignore": true
+  },
+  {
+    "__docId__": 53,
+    "kind": "function",
+    "name": "cleanRepo",
+    "memberof": "src/node.js",
+    "generator": false,
+    "async": true,
+    "static": true,
+    "longname": "src/node.js~cleanRepo",
+    "access": "public",
+    "export": false,
+    "importPath": "ipfsd-node/src/node.js",
+    "importStyle": null,
+    "description": null,
+    "lineNumber": 53,
+    "undocument": true,
+    "params": [
+      {
+        "name": "repoPath",
+        "types": [
+          "*"
+        ]
+      }
+    ],
+    "return": null,
+    "ignore": true
+  },
+  {
+    "__docId__": 54,
+    "kind": "typedef",
+    "name": "defaultOptions",
+    "memberof": "src/node.js",
+    "static": true,
+    "longname": "src/node.js~defaultOptions",
+    "access": "public",
+    "description": "",
+    "lineNumber": 87,
+    "properties": [
+      {
+        "nullable": null,
+        "types": [
+          "boolean"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "options.sharding",
+        "description": "desc"
+      },
+      {
+        "nullable": null,
+        "types": [
+          "string"
+        ],
+        "spread": false,
+        "optional": true,
+        "defaultValue": "'cwd/repo'",
+        "defaultRaw": "'cwd/repo'",
+        "name": "options.repoPath",
+        "description": "path to ipfs repo"
+      },
+      {
+        "nullable": null,
+        "types": [
+          "string",
+          "array"
+        ],
+        "spread": false,
+        "optional": true,
+        "defaultValue": "'earth'",
+        "defaultRaw": "'earth'",
+        "name": "options.bootstrap",
+        "description": "selects bootstrap & swarmkey for wanted network, you can also pass an array with addresses yourself"
+      },
+      {
+        "nullable": null,
+        "types": [
+          "string"
+        ],
+        "spread": false,
+        "optional": true,
+        "defaultValue": "'earth'",
+        "defaultRaw": "'earth'",
+        "name": "options.network",
+        "description": "selects bootstrap & swarmkey for wanted network"
+      },
+      {
+        "nullable": null,
+        "types": [
+          "boolean"
+        ],
+        "spread": false,
+        "optional": true,
+        "defaultValue": "false",
+        "defaultRaw": false,
+        "name": "option.force",
+        "description": "overwrite existing config"
+      },
+      {
+        "nullable": null,
+        "types": [
+          "boolean"
+        ],
+        "spread": false,
+        "optional": true,
+        "defaultValue": "true",
+        "defaultRaw": true,
+        "name": "options.sharding",
+        "description": "check [directory-sharding--hamt](https://github.com/ipfs/go-ipfs/blob/master/docs/experimental-features.md#directory-sharding--hamt) to learn more"
+      },
+      {
+        "nullable": null,
+        "types": [
+          "boolean"
+        ],
+        "spread": false,
+        "optional": true,
+        "defaultValue": "true",
+        "defaultRaw": true,
+        "name": "options.filestore",
+        "description": "check [ipfs-filestore](https://github.com/ipfs/go-ipfs/blob/master/docs/experimental-features.md#ipfs-filestore) to learn more"
+      },
+      {
+        "nullable": null,
+        "types": [
+          "boolean"
+        ],
+        "spread": false,
+        "optional": true,
+        "defaultValue": "false",
+        "defaultRaw": false,
+        "name": "options.streamMounting",
+        "description": "check [Libp2pStreamMounting](https://github.com/ipfs/go-ipfs/blob/master/docs/experimental-features.md#ipfs-p2p) to learn more"
+      },
+      {
+        "nullable": null,
+        "types": [
+          "boolean"
+        ],
+        "spread": false,
+        "optional": true,
+        "defaultValue": "true",
+        "defaultRaw": true,
+        "name": "option.relayHop",
+        "description": "check [circuit-relay](https://github.com/ipfs/go-ipfs/blob/master/docs/experimental-features.md#circuit-relay) to learn more"
+      },
+      {
+        "nullable": null,
+        "types": [
+          "boolean"
+        ],
+        "spread": false,
+        "optional": true,
+        "defaultValue": "true",
+        "defaultRaw": true,
+        "name": "options.autoRelay",
+        "description": "check [autorelay](https://github.com/ipfs/go-ipfs/blob/master/docs/experimental-features.md#autorelay) to learn more"
+      },
+      {
+        "nullable": null,
+        "types": [
+          "boolean"
+        ],
+        "spread": false,
+        "optional": true,
+        "defaultValue": "true",
+        "defaultRaw": true,
+        "name": "options.autoNAT",
+        "description": "check [autorelay](https://github.com/ipfs/go-ipfs/blob/master/docs/experimental-features.md#autorelay) to learn more"
+      }
+    ],
+    "type": {
+      "types": [
+        "Object"
+      ],
+      "optional": false,
+      "name": "defaultOptions"
+    }
+  },
+  {
+    "__docId__": 55,
+    "kind": "class",
+    "name": "Node",
+    "memberof": "src/node.js",
+    "static": true,
+    "longname": "src/node.js~Node",
+    "access": "public",
+    "export": false,
+    "importPath": "ipfsd-node/src/node.js",
+    "importStyle": null,
+    "description": null,
+    "lineNumber": 97,
+    "undocument": true,
+    "interface": false,
+    "ignore": true
+  },
+  {
+    "__docId__": 56,
+    "kind": "constructor",
+    "name": "constructor",
+    "memberof": "src/node.js~Node",
+    "generator": false,
+    "async": false,
+    "static": false,
+    "longname": "src/node.js~Node#constructor",
+    "access": "public",
+    "description": "",
+    "lineNumber": 101,
+    "params": [
+      {
+        "nullable": null,
+        "types": [
+          "object"
+        ],
+        "spread": false,
+        "optional": true,
+        "defaultValue": "defaultOptions",
+        "defaultRaw": "defaultOptions",
+        "name": "options",
+        "description": "see {@link defaultOptions}"
+      }
+    ]
+  },
+  {
+    "__docId__": 57,
+    "kind": "member",
+    "name": "options",
+    "memberof": "src/node.js~Node",
+    "static": false,
+    "longname": "src/node.js~Node#options",
+    "access": "public",
+    "description": null,
+    "lineNumber": 103,
+    "undocument": true,
+    "type": {
+      "types": [
+        "*"
+      ]
+    }
+  },
+  {
+    "__docId__": 58,
+    "kind": "member",
+    "name": "repo",
+    "memberof": "src/node.js~Node",
+    "static": false,
+    "longname": "src/node.js~Node#repo",
+    "access": "public",
+    "description": null,
+    "lineNumber": 104,
+    "undocument": true,
+    "type": {
+      "types": [
+        "*"
+      ]
+    }
+  },
+  {
+    "__docId__": 59,
+    "kind": "member",
+    "name": "config",
+    "memberof": "src/node.js~Node",
+    "static": false,
+    "longname": "src/node.js~Node#config",
+    "access": "public",
+    "description": null,
+    "lineNumber": 107,
+    "undocument": true,
+    "type": {
+      "types": [
+        "*"
+      ]
+    }
+  },
+  {
+    "__docId__": 61,
+    "kind": "member",
+    "name": "ipfsd",
+    "memberof": "src/node.js~Node",
+    "static": false,
+    "longname": "src/node.js~Node#ipfsd",
+    "access": "public",
+    "description": null,
+    "lineNumber": 118,
+    "undocument": true,
+    "type": {
+      "types": [
+        "*"
+      ]
+    }
+  },
+  {
+    "__docId__": 62,
+    "kind": "method",
+    "name": "start",
+    "memberof": "src/node.js~Node",
+    "generator": false,
+    "async": true,
+    "static": false,
+    "longname": "src/node.js~Node#start",
+    "access": "public",
+    "description": null,
+    "lineNumber": 131,
+    "undocument": true,
+    "params": [],
+    "return": {
+      "types": [
+        "*"
+      ]
+    }
+  },
+  {
+    "__docId__": 63,
+    "kind": "method",
+    "name": "stop",
+    "memberof": "src/node.js~Node",
+    "generator": false,
+    "async": true,
+    "static": false,
+    "longname": "src/node.js~Node#stop",
+    "access": "public",
+    "description": null,
+    "lineNumber": 148,
+    "undocument": true,
+    "params": [],
+    "return": null
+  },
+  {
+    "__docId__": 64,
+    "kind": "method",
+    "name": "init",
+    "memberof": "src/node.js~Node",
+    "generator": false,
+    "async": true,
+    "static": false,
+    "longname": "src/node.js~Node#init",
+    "access": "public",
+    "description": null,
+    "lineNumber": 153,
+    "undocument": true,
+    "params": [],
+    "return": null
+  },
+  {
+    "__docId__": 65,
+    "kind": "method",
+    "name": "prepareRepo",
+    "memberof": "src/node.js~Node",
+    "generator": false,
+    "async": false,
+    "static": false,
+    "longname": "src/node.js~Node#prepareRepo",
+    "access": "public",
+    "description": null,
+    "lineNumber": 167,
+    "undocument": true,
+    "params": [],
+    "return": {
+      "types": [
+        "*"
+      ]
+    }
+  },
+  {
+    "__docId__": 66,
+    "kind": "function",
+    "name": "node",
+    "memberof": "src/node.js",
+    "generator": false,
+    "async": false,
+    "static": true,
+    "longname": "src/node.js~node",
+    "access": "public",
+    "export": true,
+    "importPath": "ipfsd-node/src/node.js",
+    "importStyle": "node",
+    "description": null,
+    "lineNumber": 179,
+    "undocument": true,
+    "params": [
+      {
+        "name": "options",
+        "types": [
+          "*"
+        ]
+      }
+    ],
+    "return": null
+  },
+  {
+    "kind": "index",
+    "content": "# ipfsd-node\r\n\r\n[![Travis branch](https://img.shields.io/travis/VandeurenGlenn/ipfsd-node/master.svg?style=for-the-badge)](https://travis-ci.org/vandeurenglenn/ipfsd-node)\r\n[![npm](https://img.shields.io/npm/dt/ipfsd-node.svg?style=for-the-badge)](https://www.npmjs.com/package/ipfsd-node)\r\n[![David](https://img.shields.io/david/vandeurenglenn/ipfsd-node.svg?style=for-the-badge)](https://github.com/vandeurenglenn/ipfsd-node)\r\n[![npm](https://img.shields.io/npm/v/ipfsd-node.svg?style=for-the-badge)](https://www.npmjs.com/package/ipfsd-node)\r\n",
+    "longname": "D:\\Workspace\\vandeurenglenn\\ipfsd-node\\README.md",
+    "name": "./README.md",
+    "static": true,
+    "access": "public"
+  },
+  {
+    "kind": "packageJSON",
+    "content": "{\n  \"name\": \"ipfsd-node\",\n  \"version\": \"0.1.10\",\n  \"main\": \"dist/commonjs/node.js\",\n  \"module\": \"dist/module/node.js\",\n  \"repository\": \"https://github.com/vandeurenglenn/ipfsd-node\",\n  \"license\": \"MIT\",\n  \"private\": false,\n  \"scripts\": {\n    \"build\": \"rollup -c\",\n    \"test\": \"node test.js\"\n  },\n  \"dependencies\": {\n    \"chalk\": \"^2.4.2\",\n    \"cryptiles\": \"^4.1.3\",\n    \"crypto-io-fs\": \"^0.1.2\",\n    \"del\": \"^3.0.0\",\n    \"go-ipfs-dep\": \"^0.4.18\",\n    \"ipfs-repo\": \"^0.26.1\",\n    \"ipfsd-ctl\": \"^0.40.3\",\n    \"lodash\": \"^4.17.11\",\n    \"normalize-newline\": \"^3.0.0\",\n    \"repo-configs\": \"^0.4.0\"\n  },\n  \"devDependencies\": {\n    \"esdoc\": \"^1.1.0\",\n    \"esdoc-ecmascript-proposal-plugin\": \"^1.0.0\",\n    \"esdoc-standard-plugin\": \"^1.0.0\",\n    \"rollup\": \"^0.58.2\",\n    \"tape-async\": \"^2.3.0\"\n  }\n}\n",
+    "longname": "D:\\Workspace\\vandeurenglenn\\ipfsd-node\\package.json",
+    "name": "package.json",
+    "static": true,
+    "access": "public"
+  }
+]

@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <base data-ice="baseUrl" href="../../">
+  <title data-ice="title">src/node.js | ipfsd-node</title>
+  <link type="text/css" rel="stylesheet" href="css/style.css">
+  <link type="text/css" rel="stylesheet" href="css/prettify-tomorrow.css">
+  <script src="script/prettify/prettify.js"></script>
+  <script src="script/manual.js"></script>
+</head>
+<body class="layout-container" data-ice="rootContainer">
+
+<header>
+  <a href="./">Home</a>
+  
+  <a href="identifiers.html">Reference</a>
+  <a href="source.html">Source</a>
+  
+  <div class="search-box">
+  <span>
+    <img src="./image/search.png">
+    <span class="search-input-edge"></span><input class="search-input"><span class="search-input-edge"></span>
+  </span>
+    <ul class="search-result"></ul>
+  </div>
+<a style="position:relative; top:3px;" href="https://github.com/vandeurenglenn/ipfsd-node"><img width="20px" src="./image/github.png"></a></header>
+
+<nav class="navigation" data-ice="nav"><div>
+  <ul>
+    
+  <li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-node">node</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-typedef">T</span><span data-ice="name"><span><a href="typedef/index.html#static-typedef-defaultOptions">defaultOptions</a></span></span></li>
+</ul>
+</div>
+</nav>
+
+<div class="content" data-ice="content"><h1 data-ice="title">src/node.js</h1>
+<pre class="source-code line-number raw-source-code"><code class="prettyprint linenums" data-ice="content">// ipfs modules
+import * as Repo from &apos;ipfs-repo&apos;;
+import * as IPFSFactory from &apos;ipfsd-ctl&apos;;
+// buildin modules
+import { join } from &apos;path&apos;;
+import { unlinkSync, rmdirSync } from &apos;fs&apos;;
+
+import chalk from &apos;chalk&apos;;
+import { config } from &apos;repo-configs&apos;;
+import * as fs from &apos;crypto-io-fs&apos;;
+import del from &apos;del&apos;;
+import normalizeNewline from &apos;normalize-newline&apos;;
+import { merge } from &apos;lodash&apos;;
+
+const { exists, write, read } = fs;
+const factory = IPFSFactory.create({type: &apos;go&apos;});
+
+if (process.platform === &apos;win32&apos;) {
+  const readLine = require(&apos;readline&apos;).createInterface({
+    input: process.stdin,
+    output: process.stdout
+  });
+
+  readLine.on(&apos;SIGINT&apos;, () =&gt; {
+    process.emit(&apos;SIGINT&apos;);
+  });
+};
+
+const spawn = options =&gt; new Promise((resolve, reject) =&gt; {
+  factory.spawn(options, (error, ipfsd) =&gt; {
+    if (error) reject(error);
+    resolve(ipfsd);
+  });
+});
+
+const start = (ipfsd, flags) =&gt; new Promise(async (resolve, reject) =&gt; {
+  ipfsd.start(flags, error =&gt; {
+    if (error) reject(error);
+    if (ipfsd.api) {
+      ipfsd.api.id().then(({id, addresses}) =&gt; {
+        console.group(chalk.green(&apos;ipfs daemon started and listening on&apos;));
+        addresses.forEach(address =&gt; console.log(chalk.cyan(address)))
+        console.groupEnd();
+        resolve({id, addresses})
+      }).catch(error =&gt; reject(error))
+    } else {
+      return start(ipfsd, flags)
+    }
+
+  });
+});
+
+const cleanRepo = async repoPath =&gt; {
+  console.log(`cleaning repo`);
+  try {
+    const arr = [
+      join(repoPath, &apos;api&apos;),
+      join(repoPath, &apos;repo.lock&apos;)
+    ]
+    let count = 0;
+    for (const path of arr) {
+      count++;
+      const fileExists = await exists(path)
+      if (fileExists) unlinkSync(path)
+      if (count === arr.length) {
+        return;
+      }
+    }
+  } catch (error) {
+    throw Error(error)
+  }
+};
+/**
+  * @typedef {Object} defaultOptions
+  * @property {boolean} options.sharding - desc
+  * @property {string} [options.repoPath=&apos;cwd/repo&apos;] - path to ipfs repo
+  * @property {string|array} [options.bootstrap=&apos;earth&apos;] - selects bootstrap &amp; swarmkey for wanted network, you can also pass an array with addresses yourself
+  * @property {string} [options.network=&apos;earth&apos;] - selects bootstrap &amp; swarmkey for wanted network
+  * @property {boolean} [option.force=false] - overwrite existing config
+  * @property {boolean} [options.sharding=true] - check [directory-sharding--hamt](https://github.com/ipfs/go-ipfs/blob/master/docs/experimental-features.md#directory-sharding--hamt) to learn more
+  * @property {boolean} [options.filestore=true] - check [ipfs-filestore](https://github.com/ipfs/go-ipfs/blob/master/docs/experimental-features.md#ipfs-filestore) to learn more
+  * @property {boolean} [options.streamMounting=false] - check [Libp2pStreamMounting](https://github.com/ipfs/go-ipfs/blob/master/docs/experimental-features.md#ipfs-p2p) to learn more
+  * @property {boolean} [option.relayHop=true] - check [circuit-relay](https://github.com/ipfs/go-ipfs/blob/master/docs/experimental-features.md#circuit-relay) to learn more
+  * @property {boolean} [options.autoRelay=true] - check [autorelay](https://github.com/ipfs/go-ipfs/blob/master/docs/experimental-features.md#autorelay) to learn more
+  * @property {boolean} [options.autoNAT=true] - check [autorelay](https://github.com/ipfs/go-ipfs/blob/master/docs/experimental-features.md#autorelay) to learn more
+  */
+const defaultOptions = {
+  repoPath: join(process.cwd(), &apos;repo&apos;),
+  force: false, // overwrite existing config
+  sharding: true,
+  filestore: true,
+  relayHop: true,
+  autoNAT: true,
+  autoRelay: true,
+  streamMounting: false
+}
+class Node {
+  /**
+   * @param {object} [options=defaultOptions] - see {@link defaultOptions}
+   */
+  constructor(options) {
+     return (async () =&gt; {
+       this.options = merge(defaultOptions, this.options)
+       this.repo = new Repo(this.options.repoPath);
+       const fileExists = await exists(join(this.options.repoPath, &apos;config&apos;));
+       if (fileExists &amp;&amp; !this.options.force) {
+         this.config = await read(join(this.options.repoPath, &apos;config&apos;), &apos;string&apos;);
+         this.config = JSON.parse(this.config);
+         this.config.Swarm.EnableAutoNATService = this.options.autoNAT;
+         this.config.Swarm.EnableAutoRelay = this.options.autoRelay;
+         this.config.Swarm.EnableRelayHop = this.options.relayHop;
+         this.config.Experimental.ShardingEnabled = this.options.sharding;
+         this.config.Experimental.FilestoreEnabled = this.options.filestore;
+         this.config.Experimental.Libp2pStreamMounting = this.options.streamMounting;
+       };
+       if (!fileExists || this.options.force) await this.init();
+       else await this.prepareRepo();
+       this.ipfsd = await spawn({start: false, init: false, repoPath: this.options.repoPath, disposable: false});
+       return this
+       // {
+       //   start: async () =&gt; this.startIpfsd(ipfsd, this.options),
+       //   stop: async () =&gt; {
+       //     await ipfsd.stop()
+       //     if (this.options.cleanup) await del(this.options.repoPath)
+       //   },
+       //   init: () =&gt; initRepo(this.repo, this.options)
+       // }
+     })()
+   }
+
+  async start() {
+    const ipfstStartTime = Date.now();
+    try {
+
+     const { id, addresses } = await start(this.ipfsd, this.options.flags);
+
+     console.log(`Daemon startup time: ${(Date.now() - ipfstStartTime) / 1000}s`);
+     return { ipfs: this.ipfsd.api, id, addresses };
+
+    } catch (error) {
+     if (error.message.includes(&apos;cannot acquire lock&apos;) ||
+         error.code === &apos;ECONNREFUSED&apos;) {
+       await cleanRepo(this.options.repoPath);
+     }
+     return startIpfsd(this.ipfsd, this.options);
+    }
+  }
+  async stop() {
+    await this.ipfsd.stop()
+    if (this.options.cleanup) await del(this.options.repoPath)
+  }
+
+  async init() {
+    const { repo, spec, netkey } = await config(this.options);
+    const dataSpecPath = join(this.options.repoPath, &apos;datastore_spec&apos;)
+    this.repo.init(repo, async error =&gt; {
+      if (error) throw Error(error);
+      await write(dataSpecPath, JSON.stringify(spec));
+      if (netkey) {
+        const netkeyPath = join(this.options.repoPath, &apos;swarm.key&apos;);
+        await write(netkeyPath, normalizeNewline(netkey));
+      }
+      return;
+    });
+  }
+
+  prepareRepo() {
+    return new Promise((resolve, reject) =&gt; {
+      this.repo.exists(async (error, exists) =&gt; {
+        if (error) reject(error);
+        else if (exists) resolve();
+        else await this.init();
+        resolve();
+      })
+    });
+  }
+}
+
+export default options =&gt; new Node(options);
+</code></pre>
+
+</div>
+
+<footer class="footer">
+  Generated by <a href="https://esdoc.org">ESDoc<span data-ice="esdocVersion">(1.1.0)</span><img src="./image/esdoc-logo-mini-black.png"></a>
+</footer>
+
+<script src="script/search_index.js"></script>
+<script src="script/search.js"></script>
+<script src="script/pretty-print.js"></script>
+<script src="script/inherited-summary.js"></script>
+<script src="script/test-summary.js"></script>
+<script src="script/inner-link.js"></script>
+<script src="script/patch-for-local.js"></script>
+</body>
+</html>
