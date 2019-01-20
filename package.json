@@ -16,11 +16,11 @@
     "crypto-io-fs": "^0.1.2",
     "del": "^3.0.0",
     "go-ipfs-dep": "^0.4.18",
-    "ipfs-repo": "^0.26.0",
+    "ipfs-repo": "^0.26.1",
     "ipfsd-ctl": "^0.40.3",
     "lodash": "^4.17.11",
     "normalize-newline": "^3.0.0",
-    "repo-configs": "^0.4.0-preview"
+    "repo-configs": "^0.4.0"
   },
   "devDependencies": {
     "rollup": "^0.58.2",
