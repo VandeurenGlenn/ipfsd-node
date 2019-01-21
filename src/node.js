@@ -117,19 +117,26 @@ class Node {
         this.config.Experimental.Libp2pStreamMounting = this.options.streamMounting;
         if (this.options.ports) {
           if (this.options.ports.api) this.config.Addresses.API = (() => {
-            const addr = multiaddr(this.config.Addresses.API).nodeAddress();
+            const multi = multiaddr(this.config.Addresses.API);
+            const addr = multi.nodeAddress();
+            const proto = multi.protoNames()[1];
             addr.port = this.options.ports.api;
-            return addr.toString()
+            return multiaddr.fromNodeAddress({address: addr.address, port: addr.port}, proto).toString()
           })();
-          if (this.options.ports.swarm) this.config.Addresses.Swarm = this.config.Addresses.Swarm.map(address => {
-            address = multiaddr(address).nodeAddress();
-            address.port = this.options.ports.swarm;
-            return address.toString();
+          if (this.options.ports.swarm) this.config.Addresses.Swarm = this.config.Addresses.Swarm.map(addr => {
+            const multi = multiaddr(addr);
+            if (multi.nodeAddress().address.includes('::')) return addr.replace(multi.nodeAddress().port, this.options.ports.swarm);
+            addr = multi.nodeAddress();
+            const proto = multi.protoNames()[1];
+            addr.port = this.options.ports.swarm;
+            return multiaddr.fromNodeAddress({address: addr.address, port: addr.port}, proto).toString();
           });
           if (this.options.ports.gateway) this.config.Addresses.Gateway = this.config.Addresses.Gateway = (() => {
-            const addr = multiaddr(this.config.Addresses.Gateway).nodeAddress();
+            const multi = multiaddr(this.config.Addresses.Gateway);
+            const addr = multi.nodeAddress();
+            const proto = multi.protoNames()[1];
             addr.port = this.options.ports.gateway;
-            return addr.toString()
+            return multiaddr.fromNodeAddress({address: addr.address, port: addr.port}, proto).toString()
           })();
         }
         write(join(this.options.repoPath, 'config'), JSON.stringify(this.config))
