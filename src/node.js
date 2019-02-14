@@ -4,6 +4,7 @@ import * as IPFSFactory from 'ipfsd-ctl';
 // buildin modules
 import { join } from 'path';
 import { unlinkSync, rmdirSync } from 'fs';
+import { homedir } from 'os';
 
 import chalk from 'chalk';
 import { config } from 'repo-configs';
@@ -143,7 +144,7 @@ class Node {
       };
       if (!fileExists || this.options.force) await this.init();
       else await this.prepareRepo();
-      this.ipfsd = await spawn({start: false, init: false, repoPath: this.options.repoPath, disposable: false});
+      this.ipfsd = await spawn({start: false, init: false, repoPath: this.options.repoPath, exec: this.options.exec, disposable: false});
       return this;
     })()
   }
