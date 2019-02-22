@@ -9,6 +9,7 @@
   "scripts": {
     "compile": "rollup -c",
     "preversion": "npm run compile",
+    "postversion": "npm publish",
     "test": "node test.js"
   },
   "dependencies": {
