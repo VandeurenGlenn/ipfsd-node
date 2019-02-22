@@ -176,7 +176,7 @@ class Node {
     const dataSpecPath = join(this.options.repoPath, 'datastore_spec')
     this.repo.init(repo, async error => {
       if (error) throw Error(error);
-      await write(dataSpecPath, JSON.stringify(spec, null, '\t'));
+      await write(dataSpecPath, JSON.stringify(spec));
       if (netkey) {
         const netkeyPath = join(this.options.repoPath, 'swarm.key');
         await write(netkeyPath, normalizeNewline(netkey));
