@@ -140,7 +140,7 @@ class Node {
             return multiaddr.fromNodeAddress({address: addr.address, port: addr.port}, proto).toString()
           })();
         }
-        write(join(this.options.repoPath, 'config'), JSON.stringify(this.config))
+        write(join(this.options.repoPath, 'config'), JSON.stringify(this.config, null, '\t'))
       };
       if (!fileExists || this.options.force) await this.init();
       else await this.prepareRepo();
@@ -176,7 +176,7 @@ class Node {
     const dataSpecPath = join(this.options.repoPath, 'datastore_spec')
     this.repo.init(repo, async error => {
       if (error) throw Error(error);
-      await write(dataSpecPath, JSON.stringify(spec));
+      await write(dataSpecPath, JSON.stringify(spec, null, '\t'));
       if (netkey) {
         const netkeyPath = join(this.options.repoPath, 'swarm.key');
         await write(netkeyPath, normalizeNewline(netkey));
