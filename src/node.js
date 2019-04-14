@@ -126,6 +126,9 @@ class Node {
           })();
           if (this.options.ports.swarm) this.config.Addresses.Swarm = this.config.Addresses.Swarm.map(addr => {
             const multi = multiaddr(addr);
+            if (addr.includes('ws')) {
+              return addr.replace(multi.nodeAddress().port, this.options.ports.swarm + 3)
+            }
             if (multi.nodeAddress().address.includes('::')) return addr.replace(multi.nodeAddress().port, this.options.ports.swarm);
             addr = multi.nodeAddress();
             const proto = multi.protoNames()[1];
