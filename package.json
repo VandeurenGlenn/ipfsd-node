@@ -12,7 +12,7 @@
   "scripts": {
     "compile": "rollup -c",
     "preversion": "npm run compile",
-    "postversion": "npm run test && git push origin master",
+    "postversion": "npm run test && git push --tags",
     "test": "node test.js"
   },
   "dependencies": {
