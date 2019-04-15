@@ -9,6 +9,8 @@
 ```sh
 npm i --save ipfsd-node
 ```
+## requirements
+- nodejs `>= 10.0.0`
 
 ## usage
 ### default (earth)
