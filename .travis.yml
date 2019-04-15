@@ -3,6 +3,10 @@ node_js:
 - 10
 - lts/*
 - node
+os:
+  - linux
+  - osx
+  - windows
 cache:
   yarn: true
   directories:
