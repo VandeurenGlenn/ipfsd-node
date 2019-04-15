@@ -20,7 +20,6 @@
     "go-ipfs-dep": "^0.4.19",
     "ipfs-repo": "^0.26.4",
     "ipfsd-ctl": "^0.40.3",
-    "lodash": "^4.17.11",
     "normalize-newline": "^3.0.0",
     "repo-configs": "^0.5.0"
   },

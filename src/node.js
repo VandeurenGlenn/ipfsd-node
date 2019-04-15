@@ -11,7 +11,6 @@ import { config } from 'repo-configs';
 import * as fs from 'crypto-io-fs';
 import del from 'del';
 import normalizeNewline from 'normalize-newline';
-import { merge } from 'lodash';
 import multiaddr from 'multiaddr';
 
 const { exists, write, read } = fs;
@@ -104,7 +103,7 @@ class Node {
    */
   constructor(options = {}) {
     return (async () => {
-      this.options = merge(defaultOptions, options)
+      this.options = { ...defaultOptions, ...options };
       this.repo = new Repo(this.options.repoPath);
       const fileExists = await exists(join(this.options.repoPath, 'config'));
       if (fileExists && !this.options.force) {
