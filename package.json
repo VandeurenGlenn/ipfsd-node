@@ -13,7 +13,9 @@
     "compile": "rollup -c",
     "preversion": "npm run compile",
     "postversion": "npm run test && git push --tags",
-    "test": "node test.js"
+    "test": "node test.js",
+    "prepare": "npm run snyk-protect",
+    "snyk-protect": "snyk-protect"
   },
   "dependencies": {
     "chalk": "^2.4.2",
@@ -24,12 +26,14 @@
     "ipfs-repo": "^0.26.4",
     "ipfsd-ctl": "^0.40.3",
     "normalize-newline": "^3.0.0",
-    "repo-configs": "^0.5.0"
+    "repo-configs": "^0.5.0",
+    "@snyk/protect": "latest"
   },
   "devDependencies": {
     "esdoc": "^1.1.0",
     "esdoc-standard-plugin": "^1.0.0",
     "rollup": "^0.58.2",
     "tape-async": "^2.3.0"
-  }
+  },
+  "snyk": true
 }
