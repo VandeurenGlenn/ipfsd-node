@@ -21,7 +21,7 @@
     "crypto-io-fs": "^0.1.2",
     "del": "^3.0.0",
     "go-ipfs-dep": "^0.4.19",
-    "ipfs-repo": "^0.26.4",
+    "ipfs-repo": "^15.0.0",
     "ipfsd-ctl": "^0.40.3",
     "normalize-newline": "^3.0.0",
     "repo-configs": "^0.5.0"
